@@ -100,6 +100,7 @@ startBtn.addEventListener("click", handleStart);
 pauseBtn.addEventListener("click", handlePause);
 stopBtn.addEventListener("click", handleStop);
 resetBtn.addEventListener("click", handleReset);
+historyBtn.addEventListener("click", showHistory);
 
 infoBtn.addEventListener("click", showModal);
 closeModalBtn.addEventListener("click", showModal);
