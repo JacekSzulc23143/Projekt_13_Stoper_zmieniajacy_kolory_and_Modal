@@ -17,6 +17,8 @@ let seconds = 0;
 
 // funkcja stoper start
 const handleStart = () => {
+	clearInterval(countTime);
+
 	countTime = setInterval(() => {
 		if (seconds < 9) {
 			seconds++;
@@ -31,7 +33,13 @@ const handleStart = () => {
 			seconds = 0;
 			stopwatch.textContent = `${minutes}:00`;
 		}
-	}, 500);
+	}, 1000);
+};
+
+// funkcja pauzowania czasu
+const handlePause = () => {
+    clearInterval(countTime);
 };
 
 startBtn.addEventListener("click", handleStart);
+pauseBtn.addEventListener("click", handlePause);
