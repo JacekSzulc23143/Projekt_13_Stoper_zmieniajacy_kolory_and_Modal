@@ -14,6 +14,7 @@ const closeModalBtn = document.querySelector(".close");
 let countTime;
 let minutes = 0;
 let seconds = 0;
+let timesArr = [];
 
 // funkcja stoper start
 const handleStart = () => {
@@ -22,11 +23,11 @@ const handleStart = () => {
 	countTime = setInterval(() => {
 		if (seconds < 9) {
 			seconds++;
-			console.log(seconds);
+			// console.log(seconds);
 			stopwatch.textContent = `${minutes}:0${seconds}`;
 		} else if (seconds >= 9 && seconds < 59) {
 			seconds++;
-			console.log(`Drugi if: ${seconds}`);
+			// console.log(`Drugi if: ${seconds}`);
 			stopwatch.textContent = `${minutes}:${seconds}`;
 		} else {
 			minutes++;
@@ -38,8 +39,25 @@ const handleStart = () => {
 
 // funkcja pauzowania czasu
 const handlePause = () => {
-    clearInterval(countTime);
+	clearInterval(countTime);
+};
+
+// funkcja stoper stop
+const handleStop = () => {
+	time.innerHTML = `Ostatni czas: ${stopwatch.textContent}`;
+
+	if (stopwatch.textContent !== "0:00") {
+		time.style.visibility = "visible";
+		timesArr.push(stopwatch.textContent);
+		console.log(timesArr);
+	}
+	clearInterval(countTime);
+	stopwatch.textContent = "0:00";
+	timeList.textContent = "";
+	seconds = 0;
+	minutes = 0;
 };
 
 startBtn.addEventListener("click", handleStart);
 pauseBtn.addEventListener("click", handlePause);
+stopBtn.addEventListener("click", handleStop);
