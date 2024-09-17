@@ -51,16 +51,16 @@ const handleStop = () => {
 		timesArr.push(stopwatch.textContent);
 		// console.log(timesArr);
 	}
-    
+
 	clearStuff();
 };
 
 // funkcja stoper reset
 const handleReset = () => {
-    time.style.visibility = "hidden";
+	time.style.visibility = "hidden";
 	timesArr = [];
 	clearStuff();
-    // console.log(timesArr);
+	// console.log(timesArr);
 };
 
 // funkcja czyszcząca wskazania stopera
@@ -72,7 +72,21 @@ const clearStuff = () => {
 	minutes = 0;
 };
 
+// archiwum
+const showHistory = () => {
+	timeList.textContent = "";
+	let num = 1;
+
+	timesArr.forEach(time => {
+		const newTime = document.createElement("li");
+		newTime.innerHTML = `Pomiar nr ${num}: <span>${time}</span>`;
+		timeList.appendChild(newTime);
+		num++;
+	});
+};
+
 startBtn.addEventListener("click", handleStart);
 pauseBtn.addEventListener("click", handlePause);
 stopBtn.addEventListener("click", handleStop);
 resetBtn.addEventListener("click", handleReset);
+historyBtn.addEventListener("click", showHistory);
